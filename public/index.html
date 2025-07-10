@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#dc2626" />
+    <meta
+      name="description"
+      content="BearingPoint Account Analyzer - Analysez vos comptes clients et identifiez les opportunités"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>BearingPoint Account Analyzer</title>
+
+    <!-- Mock window.claude.complete for CodeSandbox -->
+    <script>
+      // Mock function for CodeSandbox deployment
+      window.claude = {
+        complete: async function (prompt) {
+          console.log("Mock Claude API called with prompt:", prompt);
+
+          // Return mock responses based on prompt content
+          if (prompt.includes("informations de base")) {
+            return JSON.stringify({
+              fullName: "Entreprise Test",
+              sector: "Technologie",
+              size: "10,000 employés, €5 milliards CA",
+              headquarters: "Paris, France",
+              description: "Entreprise leader dans le secteur technologique",
+              websiteURL: "https://www.entreprise-test.com",
+            });
+          }
+
+          if (prompt.includes("actualités récentes")) {
+            return JSON.stringify([
+              {
+                title: "Nouvelle stratégie digitale annoncée",
+                date: "Juillet 2025",
+                summary:
+                  "L'entreprise annonce une transformation digitale majeure",
+                relevance:
+                  "Opportunité d'accompagnement en transformation digitale",
+                source: "Les Echos",
+                urgency: "haute",
+                businessImpact: "Investissement de 100M€ prévu",
+              },
+            ]);
+          }
+
+          if (prompt.includes("opportunités BearingPoint")) {
+            return JSON.stringify([
+              {
+                offering: "Digital Strategy & Roadmap",
+                category: "Transformation Digitale",
+                rationale: "Accompagnement stratégique nécessaire",
+                expectedImpact:
+                  "Amélioration de 30% de l'efficacité opérationnelle",
+                timeframe: "Court terme (3-6 mois)",
+                priority: "haute",
+              },
+            ]);
+          }
+
+          if (prompt.includes("historique")) {
+            return JSON.stringify({
+              foundation: {
+                year: "1985",
+                founders: ["Jean Dupont", "Marie Martin"],
+                location: "Paris, France",
+                context: "Création dans un contexte de boom technologique",
+              },
+              timeline: [
+                {
+                  period: "1985-1995",
+                  title: "Création et développement initial",
+                  description:
+                    "Lancement de l'entreprise avec focus sur l'innovation",
+                  keyEvents: [
+                    "Création",
+                    "Premier produit",
+                    "Expansion nationale",
+                  ],
+                  significance: "Base solide pour la croissance",
+                },
+              ],
+              culturalDNA: {
+                values: ["Innovation", "Excellence", "Collaboration"],
+                workingStyle: "Agile et collaboratif",
+                decisionMaking: "Processus décisionnel rapide",
+                changeAptitude: "Très adaptable au changement",
+              },
+              prospectionInsights: [
+                "Entreprise ouverte à l'innovation",
+                "Historique de partenariats réussis",
+              ],
+            });
+          }
+
+          if (
+            prompt.includes("organigramme") ||
+            prompt.includes("dirigeants")
+          ) {
+            return JSON.stringify({
+              ceo: {
+                name: "Pierre Directeur",
+                title: "Chief Executive Officer",
+                department: "Direction Générale",
+                profile: "20 ans d'expérience dans le secteur",
+                tenure: "2020",
+                previousRole: "COO chez Concurrent SA",
+              },
+              executiveTeam: [
+                {
+                  name: "Marie Finance",
+                  title: "Chief Financial Officer",
+                  department: "Finance",
+                  profile: "Expert en transformation financière",
+                  reportsTo: "CEO",
+                },
+              ],
+              divisions: [
+                {
+                  name: "Innovation",
+                  head: "Jean Innovation",
+                  headTitle: "VP Innovation",
+                  description: "Responsable de la R&D",
+                },
+              ],
+            });
+          }
+
+          if (prompt.includes("rapport")) {
+            return `# RAPPORT DE PROSPECTION - Entreprise Test
+
+## RÉSUMÉ EXÉCUTIF
+- Entreprise technologique de 10,000 employés
+- Opportunité majeure en transformation digitale
+- Score de qualification: 75/100
+- Recommandation: Prospect TIÈDE 🟠
+
+## PROFIL ENTREPRISE
+**Secteur:** Technologie
+**Taille:** 10,000 employés, €5 milliards CA
+**Siège:** Paris, France
+
+## OPPORTUNITÉS BEARINGPOINT
+1. **Digital Strategy & Roadmap** - Priorité haute
+2. **Process Mining & Automation** - Priorité moyenne
+3. **Data & Analytics Platform** - Priorité haute
+
+## RECOMMANDATIONS
+- Organiser un workshop découverte
+- Cibler le CEO et la Direction Innovation
+- Proposer une mission d'audit préalable
+
+## PROCHAINES ÉTAPES
+1. Prise de contact avec Pierre Directeur (CEO)
+2. Proposition de workshop sur la transformation digitale
+3. Préparation d'une offre personnalisée`;
+          }
+
+          // Default response
+          return JSON.stringify({
+            message: "Données simulées pour la démonstration",
+            status: "success",
+          });
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
